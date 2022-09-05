@@ -38,7 +38,3 @@ newAmpel.show()
 newAmpel.switch()
 
 
-
-
-
-
