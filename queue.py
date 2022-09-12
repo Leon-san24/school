@@ -15,9 +15,6 @@ class Node:
         self.next_node = pNext
         return self.next_node
 
-    def next_node(self):
-        return self.next_node
-
 
 class Queue:
 
@@ -26,19 +23,19 @@ class Queue:
         self.tail = None
 
     def enqueue(self):
-
         name = input("Name: ")
 
         new_node = Node(name)
 
-        if self.head is not None:
-            self.tail = self.tail.set_next(new_node)
-
+        if self.is_empty():
+            self.head = self.tail = new_node
         else:
-            self.head = new_node
+            self.tail.next_node = new_node
+            self.tail = new_node
+            
 
     def dequeue(self):
-        if self.head is not None:
+        if self.is_empty() != True:
             self.head = Node.next_node(self.head)
             print("Dequeded!")
         else:
@@ -51,12 +48,10 @@ class Queue:
             return self.head
 
     def is_empty(self):
-        if self.head:
-            return self.head
-        else:
-            print("The list is empty")
+        return self.head is None
 
 
+"""
 Node_1 = Node("Leon")
 Node_2 = Node("Leo")
 Node_3 = Node("Leonard")
@@ -84,5 +79,5 @@ newQueue.dequeue()
 print(newQueue.head.value)
 
 
-
+"""
 
