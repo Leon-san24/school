@@ -1,24 +1,25 @@
+from __future__ import annotations
+class Node:
+
+    def __init__(self, value):
+        self.value = value
+        self.next_node: Node | None = Node
+
+    def get_content(self):
+        return self.value
+
+    def set_content(self, pContent):
+        self.value = pContent
+
+    def set_next(self, pNext):
+        self.next_node = pNext
+        return self.next_node
+
+    def next_node(self):
+        return self.next_node
 
 
 class Queue:
-
-    class Node:
-
-        def __init__(self, value):
-            self.value = value
-            self.next_node = None
-
-        def get_content(self):
-            return self.value
-
-        def set_content(self, pContent):
-            self.value = pContent
-
-        def set_next(self, pNext):
-            self.next_node = pNext
-
-        def next_node(self):
-            return self.next_node
 
     def __init__(self):
         self.head = None
@@ -28,19 +29,23 @@ class Queue:
 
         name = input("Name: ")
 
-        new_node = self.Node(name)
+        new_node = Node(name)
 
         if self.head is not None:
-            self.tail = new_node
-            self.Node.set_next(new_node)
+            self.tail = self.tail.set_next(new_node)
+
         else:
             self.head = new_node
 
     def dequeue(self):
-        self.head = None
+        if self.head is not None:
+            self.head = Node.next_node(self.head)
+            print("Dequeded!")
+        else:
+            return None
 
     def front(self):
-        if self.is_empty():
+        if self.is_empty() is None:
             return
         else:
             return self.head
@@ -50,8 +55,34 @@ class Queue:
             return self.head
         else:
             print("The list is empty")
-            return None
 
-Node_1 = Queue.Node("Leon",2)
 
-print(Node_1.value)
+Node_1 = Node("Leon")
+Node_2 = Node("Leo")
+Node_3 = Node("Leonard")
+Node_4 = Node("Liao")
+
+Node_1.set_next(Node_2)
+Node_2.set_next(Node_3)
+Node_3.set_next(Node_4)
+
+newQueue = Queue()
+newQueue.head = Node_1
+newQueue.tail = Node_4
+
+print(newQueue.head.value)
+newQueue.dequeue()
+print(newQueue.head.value)
+newQueue.dequeue()
+print(newQueue.head.value)
+newQueue.dequeue()
+print(newQueue.head.value)
+
+
+newQueue.enqueue()
+newQueue.dequeue()
+print(newQueue.head.value)
+
+
+
+
