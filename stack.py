@@ -22,10 +22,9 @@ class Stack:
     def __init__(self):
         self.head = None
 
-    def push(self):
-        name = input("Name: ")
+    def push(self, value):
 
-        new_node = Node(name)
+        new_node = Node(value)
         if self.is_empty():
             self.head = new_node
         else:
@@ -48,10 +47,4 @@ class Stack:
     def is_empty(self):
         return self.head is None
 
-newStack = Stack()
 
-for i in range(3):
-    newStack.push()
-
-newStack.dequeue()
-print(newStack.top().value)
