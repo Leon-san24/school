@@ -15,8 +15,8 @@ class Node:
     def set_next(self, pNext):
         self.next_node = pNext
         return self.next_node
-
-
+    
+    
 class Stack:
 
     def __init__(self):
@@ -30,7 +30,7 @@ class Stack:
         else:
             new_node.set_next(self.head)
             self.head = new_node
-         
+        
     def dequeue(self):
         if self.is_empty() == False:
             self.head = self.head.next_node

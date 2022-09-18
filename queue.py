@@ -1,9 +1,8 @@
-from __future__ import annotations
 class Node:
 
     def __init__(self, value):
         self.value = value
-        self.next_node: Node | None = Node
+        self.next_node = None
 
     def get_content(self):
         return self.value
@@ -27,7 +26,7 @@ class Queue:
 
         new_node = Node(name)
 
-        if self.is_empty():
+        if self.is_empty() == True:
             self.head = self.tail = new_node
         else:
             self.tail.next_node = new_node
@@ -35,8 +34,8 @@ class Queue:
             
 
     def dequeue(self):
-        if self.is_empty() != True:
-            self.head = Node.next_node(self.head)
+        if self.is_empty() == False:
+            self.head = self.head.next_node
             print("Dequeded!")
         else:
             return None
@@ -48,36 +47,26 @@ class Queue:
             return self.head
 
     def is_empty(self):
-        return self.head is None
+        if self.head == None:
+            return True
+        else:
+            return False
 
 
-"""
-Node_1 = Node("Leon")
-Node_2 = Node("Leo")
-Node_3 = Node("Leonard")
-Node_4 = Node("Liao")
 
-Node_1.set_next(Node_2)
-Node_2.set_next(Node_3)
-Node_3.set_next(Node_4)
+
 
 newQueue = Queue()
-newQueue.head = Node_1
-newQueue.tail = Node_4
-
-print(newQueue.head.value)
-newQueue.dequeue()
-print(newQueue.head.value)
-newQueue.dequeue()
-print(newQueue.head.value)
-newQueue.dequeue()
-print(newQueue.head.value)
-
 
 newQueue.enqueue()
+newQueue.enqueue()
+newQueue.enqueue()
+
+print(newQueue.head.value)
 newQueue.dequeue()
 print(newQueue.head.value)
+newQueue.dequeue()
+print(newQueue.head.value)
+newQueue.dequeue()
 
-
-"""
 
