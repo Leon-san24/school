@@ -7,15 +7,15 @@ class List:
         self.last = None
         self.current = None
     
-    def enlist(self):
+    def append(self):
         content = input("Please define content")
         new_Node = Node(content)
         
         if self.is_empty():
-            self.first = self.last = self.current = new_Node 
+            self.first = self.last =  new_Node 
         else:
             self.last.next_node = new_Node
-            self.last = self.current = new_Node
+            self.last = new_Node
             
         
     def is_empty(self):
@@ -37,11 +37,25 @@ class List:
         self.current.next_node = new_Node
         new_Node.next_node = original_node
     
+    def remove(self):
+        if self.is_empty() is not None:
+            buffer = self.current
+            self.current = self.current.next_node
+            buffer2 = self.current.next_node
+            self.current = None
+            self.current = buffer
+            self.current.next_node = buffer2
+        else:
+            print("Liste ist Leer!")
+    
     def set_current_first(self):
         self.current = self.first
     
     def set_current_last(self):
         self.current = self.last
+    
+    def set_current_next(self):
+        self.current = self.current.next_node
     
     def get_content(self):
         return self.current.content
@@ -65,7 +79,12 @@ class List:
 newList = List()
 
 for i in range (3):
-    newList.enlist()
+    newList.append()
 
+newList.set_current_first()
+newList.set_current_next()
+newList.set_current_next()
 newList.insert()
+newList.loop()
+newList.remove()
 newList.loop()
