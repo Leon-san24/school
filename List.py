@@ -6,9 +6,19 @@ class List:
         self.first = None
         self.last = None
         self.current = None
+        
+    def append_input(self, content):
+        
+        new_Node = Node(content)
+        
+        if self.is_empty():
+            self.first = self.last =  new_Node 
+        else:
+            self.last.next_node = new_Node
+            self.last = new_Node
     
-    def append(self):
-        content = input("Please define content")
+    def append_input(self):
+        content = input("Please define content: ")
         new_Node = Node(content)
         
         if self.is_empty():
@@ -32,7 +42,7 @@ class List:
         while self.current.next_node != original_node:
             self.current = self.current.next_node
             
-        content = input("Please define content")
+        content = input("Please define content: ")
         new_Node = Node(content)
         self.current.next_node = new_Node
         new_Node.next_node = original_node
@@ -74,6 +84,9 @@ class List:
         print(self.current.content)
         self.current = buffer
     
+    def concat(self,pList):
+        self.last.next_node = plist.first
+        self.last = pList.last
 
         
 newList = List()
