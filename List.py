@@ -7,7 +7,7 @@ class List:
         self.last = None
         self.current = None
         
-    def append_input(self, content):
+    def append(self, content):
         
         new_Node = Node(content)
         
@@ -87,17 +87,26 @@ class List:
     def concat(self,pList):
         self.last.next_node = plist.first
         self.last = pList.last
-
+    
+    def search(self,pElement):
+        buffer = self.current
+        self.current = self.first
+        while self.current.content != pElement:
+            if self.current.next_node is None:
+                return False
+            else:  
+                self.current = self.current.next_node
+        self.current = buffer
+        return True
+        
         
 newList = List()
 
-for i in range (3):
-    newList.append()
+newList.append(2)
+newList.append(3)
+newList.append(5)
+newList.append(24)
+newList.append(4)
 
-newList.set_current_first()
-newList.set_current_next()
-newList.set_current_next()
-newList.insert()
-newList.loop()
-newList.remove()
-newList.loop()
+
+print(newList.search(0))
