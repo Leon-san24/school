@@ -70,9 +70,8 @@ class List:
     def get_content(self):
         return self.current.content
     
-    def set_content(self):
-        content = input("New Content: ")
-        self.current.content = content
+    def set_content(self,pcon):
+        self.current.content = pcon
     
     def loop(self):
         buffer = self.current
@@ -90,7 +89,7 @@ class List:
     
     def search(self,pElement):
         buffer = self.current
-        self.current = self.first
+        self.set_current_first()
         while self.current.content != pElement:
             if self.current.next_node is None:
                 return False
@@ -100,13 +99,13 @@ class List:
         return True
         
         
-newList = List()
+#newList = List()
 
-newList.append(2)
-newList.append(3)
-newList.append(5)
-newList.append(24)
-newList.append(4)
+#newList.append(2)
+#newList.append(3)
+#newList.append(5)
+#newList.append(24)
+#newList.append(4)
 
 
-print(newList.search(0))
+#print(newList.search(9))
